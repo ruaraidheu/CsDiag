@@ -152,6 +152,7 @@ namespace CsDiag
                 }
                 code = TagDecoder.StripTags(code, "detail");
             }
+            filename = cla;
             CSharpCodeProvider provider = new CSharpCodeProvider();
             CompilerParameters parameters = new CompilerParameters();
             parameters.ReferencedAssemblies.Add("System.dll");
@@ -571,7 +572,7 @@ namespace CsDiag
             save.SaveLine("");
             save.SaveLine("");
 
-            save.SaveAll(System.Environment.CurrentDirectory + "\\DiagReport-" + filename + ".log");
+            save.SaveAll(pth + "\\DiagReport-" + filename + ".log");
 
             save.SaveLine("");
             save.SaveLine("----PRESS_ANY_KEY_TO_EXIT----");
