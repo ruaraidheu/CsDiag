@@ -34,40 +34,81 @@ namespace CsDiag
             string pth = Environment.CurrentDirectory;
             while (!foundcode)
             {
-                loadpath = loadpath.Replace("/", "\\");
-                string[] fp = loadpath.Split(".");
-                if (fp.Length >= 2)
+                if (loadpath.IsStartAndRemove(out loadpath, "::"))
                 {
-                    exten = "." + fp.Last();
-                    loadpath = loadpath.IfEndAndRemove(exten);
-                    fp = new string[0];
-                    fp = loadpath.Split("\\");
+                    loadpath = loadpath.Replace("/", "\\");
+                    string[] fp = loadpath.Split(".");
                     if (fp.Length >= 2)
                     {
-                        loadname = fp.Last();
-                        loadpath = loadpath.IfEndAndRemove("\\" + loadname);
-                        pth = loadpath;
+                        exten = "." + fp.Last();
+                        loadpath = loadpath.IfEndAndRemove(exten);
+                        fp = new string[0];
+                        fp = loadpath.Split("\\");
+                        if (fp.Length >= 2)
+                        {
+                            loadname = fp.Last();
+                            loadpath = loadpath.IfEndAndRemove("\\" + loadname);
+                            pth += "\\"+loadpath;
+                        }
+                        else
+                        {
+                            loadname = loadpath;
+                        }
                     }
                     else
                     {
-                        loadname = loadpath;
+                        fp = new string[0];
+                        fp = loadpath.Split("\\");
+                        if (fp.Length >= 2)
+                        {
+                            loadname = fp.Last();
+                            loadpath = loadpath.IfEndAndRemove("\\" + loadname);
+                            pth += "\\"+loadpath;
+                        }
+                        else
+                        {
+                            loadname = loadpath;
+                        }
                     }
                 }
                 else
                 {
-                    fp = new string[0];
-                    fp = loadpath.Split("\\");
+                    loadpath = loadpath.Replace("/", "\\");
+                    string[] fp = loadpath.Split(".");
                     if (fp.Length >= 2)
                     {
-                        loadname = fp.Last();
-                        loadpath = loadpath.IfEndAndRemove("\\" + loadname);
-                        pth = loadpath;
+                        exten = "." + fp.Last();
+                        loadpath = loadpath.IfEndAndRemove(exten);
+                        fp = new string[0];
+                        fp = loadpath.Split("\\");
+                        if (fp.Length >= 2)
+                        {
+                            loadname = fp.Last();
+                            loadpath = loadpath.IfEndAndRemove("\\" + loadname);
+                            pth = loadpath;
+                        }
+                        else
+                        {
+                            loadname = loadpath;
+                        }
                     }
                     else
                     {
-                        loadname = loadpath;
+                        fp = new string[0];
+                        fp = loadpath.Split("\\");
+                        if (fp.Length >= 2)
+                        {
+                            loadname = fp.Last();
+                            loadpath = loadpath.IfEndAndRemove("\\" + loadname);
+                            pth = loadpath;
+                        }
+                        else
+                        {
+                            loadname = loadpath;
+                        }
                     }
                 }
+
                 if (exten != ".ovr"&&exten != ".csdref")
                 {
                     foundcode = true;
