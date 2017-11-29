@@ -1,7 +1,7 @@
 ﻿using Microsoft.CSharp;
 using Microsoft.Win32;
 using Ruaraidheulib;
-using Ruaraidheulib.Console;
+using Ruaraidheulib.Interface.reulib64.Win64.Console;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ using static Ruaraidheulib.List;
 
 namespace CsDiag
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     class Program
     {
         static void Main(string[] args)
